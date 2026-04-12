@@ -60,8 +60,12 @@ const auth = app ? getAuth(app) : null;
 const db = app ? getFirestore(app) : null;
 const googleProvider = app ? new GoogleAuthProvider() : null;
 
+if (auth) {
+  auth.languageCode = "ru";
+}
+
 if (googleProvider) {
-  googleProvider.setCustomParameters({ prompt: "select_account" });
+  googleProvider.setCustomParameters({ prompt: "select_account", hl: "ru" });
 }
 
 function ensureConfigured() {
@@ -112,7 +116,12 @@ export async function signInWithGoogle() {
       throw new Error("Проблема с сетью. Проверьте интернет и повторите вход.");
     }
     if (code === "auth/unauthorized-domain") {
-      throw new Error("Этот домен не разрешен в Firebase Authentication.");
+      throw new Error(
+        "Домен не добавлен в Firebase: Console → Authentication → Settings → Authorized domains (добавьте localhost или ваш сайт)."
+      );
+    }
+    if (code === "auth/account-exists-with-different-credential") {
+      throw new Error("Этот email уже привязан к другому способу входа.");
     }
     throw error;
   }
@@ -140,51 +149,81 @@ export function watchCurrentClientProfile(callback) {
   }
 
   let unsubscribeProfile = null;
+  let unsubscribeAuth = null;
+  let cancelled = false;
 
-  getRedirectResult(auth).catch(() => {
-    // Ignore redirect result errors here; they are surfaced by auth state and UI.
-  });
+  async function afterRedirectThenListen() {
+    try {
+      const redirectCred = await getRedirectResult(auth);
+      if (cancelled) return;
+      if (redirectCred?.user) {
+        try {
+          await upsertClientFromAuth(redirectCred.user);
+        } catch (e) {
+          console.warn("Firestore после Google redirect:", e);
+        }
+      }
+    } catch {
+      // Нет активного redirect или ошибка OAuth — дальше сработает onAuthStateChanged
+    }
 
-  return onAuthStateChanged(auth, async (user) => {
+    if (cancelled) return;
+
+    unsubscribeAuth = onAuthStateChanged(auth, async (user) => {
+      if (unsubscribeProfile) {
+        unsubscribeProfile();
+        unsubscribeProfile = null;
+      }
+
+      if (!user) {
+        callback({
+          authUser: null,
+          profile: null,
+          isAdmin: false,
+          firebaseReady: true,
+          error: ""
+        });
+        return;
+      }
+
+      try {
+        await upsertClientFromAuth(user);
+        const ref = doc(db, "clients", user.uid);
+        unsubscribeProfile = onSnapshot(ref, (snapshot) => {
+          const profile = snapshot.exists() ? { id: snapshot.id, ...snapshot.data() } : null;
+          callback({
+            authUser: user,
+            profile,
+            isAdmin: isAdminEmail(user.email) || profile?.role === "admin",
+            firebaseReady: true,
+            error: ""
+          });
+        });
+      } catch (error) {
+        callback({
+          authUser: user,
+          profile: null,
+          isAdmin: isAdminEmail(user.email),
+          firebaseReady: true,
+          error: error instanceof Error ? error.message : "Не удалось получить профиль."
+        });
+      }
+    });
+  }
+
+  afterRedirectThenListen();
+
+  return () => {
+    cancelled = true;
     if (unsubscribeProfile) {
       unsubscribeProfile();
       unsubscribeProfile = null;
     }
-
-    if (!user) {
-      callback({
-        authUser: null,
-        profile: null,
-        isAdmin: false,
-        firebaseReady: true,
-        error: ""
-      });
-      return;
+    if (unsubscribeAuth) {
+      unsubscribeAuth();
+      unsubscribeAuth = null;
     }
-
-    try {
-      await upsertClientFromAuth(user);
-      const ref = doc(db, "clients", user.uid);
-      unsubscribeProfile = onSnapshot(ref, (snapshot) => {
-        const profile = snapshot.exists() ? { id: snapshot.id, ...snapshot.data() } : null;
-        callback({
-          authUser: user,
-          profile,
-          isAdmin: isAdminEmail(user.email) || profile?.role === "admin",
-          firebaseReady: true,
-          error: ""
-        });
-      });
-    } catch (error) {
-      callback({
-        authUser: user,
-        profile: null,
-        isAdmin: isAdminEmail(user.email),
-        firebaseReady: true,
-        error: error instanceof Error ? error.message : "Не удалось получить профиль."
-      });
-    }
-  });
+  };
 }
 
 export function watchSubscriptionSettings(callback) {

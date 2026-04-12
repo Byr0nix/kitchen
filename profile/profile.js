@@ -189,16 +189,23 @@ async function startTierPurchase(tier) {
 
 googleLoginBtn.addEventListener("click", async () => {
   authStatus.textContent = "";
+  const labelEl = googleLoginBtn.querySelector(".google-sso-btn__label");
+  const defaultLabel = labelEl ? labelEl.textContent : "";
+  googleLoginBtn.disabled = true;
+  if (labelEl) labelEl.textContent = "Подключение к Google…";
   try {
     const user = await signInWithGoogle();
     authStatus.textContent = user
       ? "Вход через Google выполнен."
-      : "Продолжаем вход через redirect...";
-    if (requestedTier) {
+      : "Открывается страница Google… После входа вы вернётесь в профиль.";
+    if (user && requestedTier) {
       await startTierPurchase(requestedTier);
     }
   } catch (error) {
     authStatus.textContent = error instanceof Error ? error.message : "Не удалось войти через Google.";
+  } finally {
+    googleLoginBtn.disabled = false;
+    if (labelEl) labelEl.textContent = defaultLabel || "Войти через Google";
   }
 });
 
