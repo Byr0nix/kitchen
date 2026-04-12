@@ -1,0 +1,103 @@
+.admin-header {
+  grid-template-columns: 1fr auto;
+}
+
+.back-link {
+  color: #fff;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.admin-content {
+  max-width: 1080px;
+}
+
+.admin-card {
+  background: #fbfdfb;
+  border-radius: 20px;
+  padding: 1rem;
+  box-shadow: var(--soft-shadow);
+}
+
+.admin-form,
+.admin-grid {
+  display: grid;
+  gap: 0.7rem;
+}
+
+.admin-form input,
+.admin-grid input,
+.admin-form select,
+.admin-grid select {
+  border: 1px solid #d5e4d7;
+  border-radius: 10px;
+  padding: 0.6rem 0.7rem;
+  font: inherit;
+}
+
+.panel-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+}
+
+.products-table {
+  margin: 1rem 0 1.25rem;
+  display: grid;
+  gap: 0.55rem;
+}
+
+.product-row {
+  background: #f4faf4;
+  border-radius: 12px;
+  padding: 0.65rem;
+  display: grid;
+  grid-template-columns: 1fr auto auto auto;
+  gap: 0.55rem;
+  align-items: center;
+}
+
+.product-row img {
+  width: 56px;
+  height: 56px;
+  border-radius: 10px;
+  object-fit: cover;
+}
+
+.small-input {
+  width: 90px;
+}
+
+.secondary-btn {
+  border: 1px solid #d0e2d2;
+  border-radius: 10px;
+  padding: 0.52rem 0.72rem;
+  background: #ffffff;
+  cursor: pointer;
+}
+
+.danger-btn {
+  border: 0;
+  border-radius: 10px;
+  padding: 0.55rem 0.75rem;
+  background: #ff5f5f;
+  color: #fff;
+  cursor: pointer;
+}
+
+.admin-grid--subs {
+  grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+}
+
+.check {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+}
+
+@media (max-width: 760px) {
+  .product-row {
+    grid-template-columns: 1fr;
+  }
+}

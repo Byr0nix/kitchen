@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Salomatlik Bufeti">
+  <defs>
+    <linearGradient id="g" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#2d6a4f"/>
+      <stop offset="100%" style="stop-color:#40916c"/>
+    </linearGradient>
+  </defs>
+  <rect width="64" height="64" rx="14" fill="url(#g)"/>
+  <path fill="#d8f3dc" d="M32 12c-4 8-12 14-12 24a12 12 0 1024 0c0-10-8-16-12-24z"/>
+  <ellipse cx="32" cy="38" rx="8" ry="10" fill="#95d5b2" opacity=".9"/>
+  <path fill="#b7e4c7" d="M28 22c2 4 4 6 4 10h4c0-4 2-6 4-10-3 2-5 3-6 3s-3-1-6-3z"/>
+</svg>

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cart | Salomatlik Bufeti</title>
+  <link rel="shortcut icon" href="../img/logo.svg" type="image/x-icon" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+    rel="stylesheet"
+  />
+  <link rel="stylesheet" href="../styles.css" />
+  <link rel="stylesheet" href="korzina.css" />
+</head>
+<body>
+  <header class="top-header page-header">
+    <div class="brand">
+      <div class="brand__icon" aria-hidden="true"><img src="../img/logo.svg" alt="logo"></div>
+      <span class="brand__text">Salomatlik Bufeti</span>
+    </div>
+    <h1 class="page-title">Cart</h1>
+  </header>
+
+  <main class="page-content">
+    <section class="panel">
+      <div class="cart-head">
+        <h2>Your Products</h2>
+        <button id="clearCartBtn" class="danger-btn" type="button">Clear Cart</button>
+      </div>
+      <div id="cartItems" class="cart-list"></div>
+      <p id="emptyCart" class="status-text hidden">Cart is empty.</p>
+      <div class="total-row">
+        <span>Total</span>
+        <strong id="totalPrice">0 UZS</strong>
+      </div>
+      <button id="checkoutBtn" class="checkout-btn" type="button">Checkout</button>
+      <p id="checkoutStatus" class="status-text"></p>
+    </section>
+  </main>
+
+  <footer class="mobile-menu" aria-label="Bottom menu">
+    <a href="../index.html" class="mobile-menu__btn" aria-label="Home">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 10.5L12 3l9 7.5V21a1 1 0 01-1 1h-6v-6H10v6H4a1 1 0 01-1-1v-10.5z"/></svg>
+      <span>Home</span>
+    </a>
+    <a href="../location/place.html" class="mobile-menu__btn" aria-label="Location">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 22s7-6.2 7-12a7 7 0 10-14 0c0 5.8 7 12 7 12zm0-9a3 3 0 110-6 3 3 0 010 6z"/></svg>
+      <span>Location</span>
+    </a>
+    <a href="../profile/profile.html" class="mobile-menu__btn" aria-label="Profile">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 12a5 5 0 100-10 5 5 0 000 10zm-8 9a8 8 0 1116 0H4z"/></svg>
+      <span>Profile</span>
+    </a>
+    <a href="korzina.html" class="mobile-menu__btn active" aria-label="Cart">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6h15l-1.5 8H8L6 4H3M9 20a1 1 0 100 2 1 1 0 000-2zm8 0a1 1 0 100 2 1 1 0 000-2z"/></svg>
+      <span>Cart</span>
+      <span id="cartCount" class="cart-badge">0</span>
+    </a>
+  </footer>
+
+  <script type="module" src="korzina.js"></script>
+</body>
+</html>

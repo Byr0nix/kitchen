@@ -1,0 +1,8 @@
+{
+  "name": "salomatlik-bufeti",
+  "private": true,
+  "description": "Статический фронтенд; локальный сервер нужен для ES-модулей и Firebase.",
+  "scripts": {
+    "start": "npx --yes serve . -l 3000"
+  }
+}

@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Admin Panel | Salomatlik Bufeti</title>
+  <link rel="shortcut icon" href="../img/logo.svg" type="image/x-icon" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+    rel="stylesheet"
+  />
+  <link rel="stylesheet" href="../styles.css" />
+  <link rel="stylesheet" href="admin.css" />
+</head>
+<body>
+  <header class="top-header admin-header">
+    <div class="brand">
+      <div class="brand__icon" aria-hidden="true"><img src="../img/logo.svg" alt="logo"></div>
+      <span class="brand__text">Salomatlik Bufeti Admin</span>
+    </div>
+    <a href="../index.html" class="back-link">← На сайт</a>
+  </header>
+
+  <main class="page-content admin-content">
+    <section id="loginSection" class="admin-card">
+      <h1>Вход в админ-панель</h1>
+      <form id="loginForm" class="admin-form">
+        <label>Логин <input id="loginInput" type="text" required /></label>
+        <label>Пароль <input id="passwordInput" type="password" required /></label>
+        <button type="submit" class="action-btn">Войти</button>
+      </form>
+      <p id="loginStatus" class="status-text"></p>
+    </section>
+
+    <section id="panelSection" class="admin-card hidden">
+      <div class="panel-head">
+        <h2>Управление товарами</h2>
+        <button id="logoutBtn" class="danger-btn" type="button">Выйти</button>
+      </div>
+      <p id="sessionStatus" class="status-text"></p>
+
+      <form id="productForm" class="admin-grid">
+        <input id="productTitle" type="text" placeholder="Название" required />
+        <input id="productPrice" type="number" min="0" placeholder="Цена (UZS)" required />
+        <input id="productCategory" type="text" placeholder="Категория" required />
+        <select id="productAccessLevel" required>
+          <option value="ALL" selected>Доступно всем (ALL)</option>
+          <option value="PREMIUM">Только Premium</option>
+          <option value="VIP">Только VIP</option>
+        </select>
+        <input id="productImage" type="url" placeholder="URL картинки" required />
+        <input id="productDesc" type="text" placeholder="Короткое описание" required />
+        <button type="submit" class="action-btn">Добавить товар</button>
+      </form>
+
+      <div id="productsTable" class="products-table"></div>
+
+      <h2>Управление подписками</h2>
+      <form id="subsForm" class="admin-grid admin-grid--subs">
+        <label>Premium цена ($/month) <input id="premiumPrice" type="number" min="1" value="98" /></label>
+        <label>VIP цена ($/month) <input id="vipPrice" type="number" min="1" value="148" /></label>
+        <label class="check"> <input id="premiumEnabled" type="checkbox" checked /> Premium активна </label>
+        <label class="check"> <input id="vipEnabled" type="checkbox" checked /> VIP активна </label>
+        <button type="submit" class="action-btn">Сохранить подписки</button>
+      </form>
+      <p id="subsStatus" class="status-text"></p>
+
+      <h2>Заявки Premium/VIP</h2>
+      <div id="subsRequestsTable" class="products-table"></div>
+
+      <h2>Клиенты и активные тарифы</h2>
+      <div id="clientsTable" class="products-table"></div>
+
+      <h2>Данные администратора</h2>
+      <form id="credentialsForm" class="admin-grid admin-grid--subs">
+        <label>Новый логин <input id="newLogin" type="text" minlength="3" required /></label>
+        <label>Новый пароль <input id="newPassword" type="password" minlength="6" required /></label>
+        <label>Текущий пароль <input id="currentPasswordConfirm" type="password" required /></label>
+        <button type="submit" class="action-btn">Обновить логин/пароль</button>
+      </form>
+      <p id="credentialsStatus" class="status-text"></p>
+    </section>
+  </main>
+
+  <script type="module" src="admin.js"></script>
+</body>
+</html>

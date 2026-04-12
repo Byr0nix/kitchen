@@ -1,0 +1,146 @@
+.page-header {
+  grid-template-columns: 1fr auto;
+}
+
+.page-title {
+  margin: 0;
+  color: #fff;
+  font-size: 1.2rem;
+}
+
+.profile-layout {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.1rem;
+}
+
+.panel {
+  background: #fbfdfb;
+  border-radius: 20px;
+  box-shadow: var(--soft-shadow);
+  padding: 1.1rem;
+}
+
+.panel h2 {
+  margin-top: 0;
+}
+
+.account-panel {
+  display: grid;
+  gap: 1rem;
+}
+
+.account-panel__head {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  align-items: flex-start;
+}
+
+.account-card {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  padding: 0.8rem;
+  border-radius: 16px;
+  background: #f4faf4;
+}
+
+.account-avatar {
+  width: 68px;
+  height: 68px;
+  border-radius: 50%;
+  object-fit: cover;
+  background: #dff0df;
+}
+
+.account-meta {
+  display: grid;
+  gap: 0.2rem;
+}
+
+.account-actions {
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.tier-pill {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 88px;
+  padding: 0.45rem 0.8rem;
+  border-radius: 999px;
+  background: #e9f8e7;
+  color: #1b7d13;
+  font-weight: 700;
+}
+
+.profile-form {
+  display: grid;
+  gap: 0.7rem;
+}
+
+.profile-form label {
+  display: grid;
+  gap: 0.3rem;
+  font-weight: 500;
+}
+
+.profile-form input,
+.profile-form textarea {
+  border: 1px solid #d6e2d6;
+  border-radius: 12px;
+  padding: 0.6rem 0.75rem;
+  font: inherit;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.profile-form input:focus,
+.profile-form textarea:focus {
+  border-color: #63cf58;
+  box-shadow: 0 0 0 3px rgba(50, 222, 31, 0.15);
+  outline: none;
+}
+
+.action-btn {
+  border: 0;
+  border-radius: 12px;
+  background: var(--green);
+  color: #fff;
+  font-weight: 600;
+  padding: 0.7rem 1rem;
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.action-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 16px rgba(50, 222, 31, 0.35);
+}
+
+.status-text {
+  color: var(--muted);
+  min-height: 1.35rem;
+}
+
+.info-block {
+  color: #2e4230;
+  line-height: 1.7;
+  background: #f4faf4;
+  border-radius: 12px;
+  padding: 0.7rem 0.8rem;
+}
+
+@media (max-width: 620px) {
+  .page-header {
+    grid-template-columns: 1fr;
+  }
+
+  .account-panel__head,
+  .account-card {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
