@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
@@ -365,4 +365,416 @@
         <button class="action-btn" type="submit">Отправить в Telegram</button>
       </form>
     </div>
+  </div> -->
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Salomatlik Bufeti</title>
+  <link rel="shortcut icon" href="img/logo.svg" type="image/x-icon" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+    rel="stylesheet"
+  />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="top-header">
+    <div class="brand">
+      <div class="brand__icon" aria-hidden="true"><img src="img/logo.svg" alt="logo"></div>
+      <span class="brand__text">Salomatlik Bufeti</span>
+    </div>
+
+    <label class="search-wrapper" for="searchInput">
+      <svg class="search-icon" viewBox="0 0 24 24" aria-hidden="true">
+        <path
+          d="M21 21l-4.35-4.35m1.35-5.65a7 7 0 11-14 0 7 7 0 0114 0z"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        />
+      </svg>
+      <input id="searchInput" type="search" placeholder="Search healthy products..." />
+    </label>
+
+    <nav class="top-nav" aria-label="Main menu">
+      <a href="#details">Details</a>
+      <a href="#partners">Partners</a>
+      <span class="nav-disabled" aria-hidden="true">Clients</span>
+      <a href="#" data-tier-link="PREMIUM">Premium Clients</a>
+      <a href="#" data-tier-link="VIP">VIP Clients</a>
+      <a href="#vacancies">Vacancies</a>
+      <a href="admin/admin.html">Admin</a>
+    </nav>
+
+    <button id="burgerBtn" class="burger-btn" type="button" aria-label="Open menu">☰</button>
+    <div id="mobileNavPanel" class="mobile-nav-panel" aria-label="Mobile menu">
+      <a href="#details">Details</a>
+      <a href="#partners">Partners</a>
+      <span class="nav-disabled" aria-hidden="true">Clients</span>
+      <a href="#" data-tier-link="PREMIUM">Premium Clients</a>
+      <a href="#" data-tier-link="VIP">VIP Clients</a>
+      <a href="#vacancies">Vacancies</a>
+      <a href="admin/admin.html">Admin</a>
+    </div>
+  </header>
+
+  <main class="page-content">
+    <section class="category-strip" aria-label="Product categories" id="categoryStrip"></section>
+
+    <section class="products-section">
+      <div class="section-header">
+        <h1>Healthy Marketplace</h1>
+        <p>Minimalist picks for better daily nutrition.</p>
+      </div>
+      <div id="productsGrid" class="products-grid"></div>
+      <p id="emptyState" class="empty-state hidden">No products match your filters.</p>
+    </section>
+
+    <section id="details" class="section-block">
+      <div class="section-header">
+        <h1>DETAILS</h1>
+        <p>О нас, как работает сервис, контакты, юридическая часть и отзывы.</p>
+      </div>
+
+      <div class="two-col">
+        <div class="panel">
+          <h2>🧩 1. О сервисе</h2>
+          <p>
+            Salomatlik Bufeti — это маркетплейс полезной еды с натуральными продуктами и удобной доставкой.
+            Мы отбираем качество и делаем покупки простыми.
+          </p>
+        </div>
+
+        <div class="panel">
+          <h2>🔎 2. Как работает сайт</h2>
+          <div class="how-steps">
+            <div class="step-card">
+              <strong>Choose product</strong>
+              <span>Выбери продукт</span>
+            </div>
+            <div class="step-card">
+              <strong>Add to cart</strong>
+              <span>Добавь в корзину</span>
+            </div>
+            <div class="step-card">
+              <strong>Checkout</strong>
+              <span>Оформи заказ</span>
+            </div>
+            <div class="step-card">
+              <strong>Get delivery</strong>
+              <span>Получай доставку</span>
+            </div>
+          </div>
+
+          <div class="security-box">
+            <h3>Безопасность</h3>
+            <p>Данные не передаются третьим лицам. Платежи безопасны.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="two-col">
+        <div class="panel">
+          <h2>📞 7. Контакты</h2>
+          <p>Telegram, телефон и адрес.</p>
+          <div class="contact-row">
+            <button id="detailsTelegramBtn" class="action-btn" type="button">Написать в Telegram</button>
+          </div>
+          <p class="muted">Телефон: +998 (__) ___-__-__</p>
+          <p class="muted">Адрес: Tashkent, (укажите адрес магазина)</p>
+        </div>
+
+        <div class="panel">
+          <h2>⚖️ 8. Юридическая часть</h2>
+          <p>
+            <a href="#" class="link">Terms of Service</a><br />
+            <a href="#" class="link">Privacy Policy</a>
+          </p>
+          <p class="muted">Даже базовые разделы — это плюс к доверию.</p>
+        </div>
+      </div>
+
+      <div class="panel reviews-panel">
+        <h2>⭐ 9. Отзывы</h2>
+        <div class="reviews-grid">
+          <div class="review-card">
+            <strong>Дильшод</strong>
+            <p>Отличные продукты и быстрая доставка. Удобно заказывать.</p>
+          </div>
+          <div class="review-card">
+            <strong>Мадина</strong>
+            <p>Понравился сервис и качество. Буду заказывать ещё.</p>
+          </div>
+          <div class="review-card">
+            <strong>Ильхом</strong>
+            <p>Всё понятно и просто. Спасибо команде!</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="partners" class="section-block">
+      <div class="section-header">
+        <h1>Partners</h1>
+        <p>Станьте партнером и продавайте через нашу витрину.</p>
+      </div>
+
+      <div class="panel">
+        <h2>💼 1. Кто может стать партнёром</h2>
+        <p>Сразу объясни, кого ты ищешь:</p>
+        <ul class="simple-list">
+          <li>поставщики (сухофрукты, напитки, боксы)</li>
+          <li>локальные производители</li>
+          <li>кафе / кухни</li>
+          <li>дропшипперы</li>
+        </ul>
+        <p class="muted">“We are looking for suppliers of healthy products, local producers, and food brands”</p>
+      </div>
+
+      <div class="two-col">
+        <div class="panel">
+          <h2>🚀 2. Что ты предлагаешь партнёрам</h2>
+          <div class="bullets-grid">
+            <div class="bullet-card">
+              <strong>📈 Продажи</strong>
+              <span>Через платформу</span>
+            </div>
+            <div class="bullet-card">
+              <strong>📦 Готовая витрина</strong>
+              <span>Ваши товары у нас</span>
+            </div>
+            <div class="bullet-card">
+              <strong>💳 Приём платежей</strong>
+              <span>Удобные оплаты</span>
+            </div>
+            <div class="bullet-card">
+              <strong>🚚 Доставка</strong>
+              <span>Если планируете</span>
+            </div>
+            <div class="bullet-card">
+              <strong>📢 Продвижение</strong>
+              <span>Трафик и акции</span>
+            </div>
+          </div>
+          <p class="muted">“Sell your products to a wide audience through our marketplace”</p>
+        </div>
+
+        <div class="panel">
+          <h2>📊 3. Условия сотрудничества</h2>
+          <div class="conditions-grid">
+            <div class="cond">
+              <strong>Комиссия</strong>
+              <span>например 5–15% с заказа</span>
+            </div>
+            <div class="cond">
+              <strong>Доставка</strong>
+              <span>кто отвечает за доставку</span>
+            </div>
+            <div class="cond">
+              <strong>Выплаты</strong>
+              <span>сроки выплат</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="panel">
+        <h2>📝 4. Форма заявки</h2>
+
+        <div class="contact-row" style="margin-bottom: 0.85rem;">
+          <div style="display:grid; gap:0.25rem;">
+            <strong>💬 Контакты</strong>
+            <span class="muted" style="font-size:0.9rem;">Telegram / WhatsApp / Email</span>
+          </div>
+          <div style="display:flex; gap:0.6rem; flex-wrap:wrap;">
+            <a
+              class="action-btn"
+              href="https://t.me/Salomatlikbufeti_bot"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Написать в Telegram
+            </a>
+            <a class="link" href="https://wa.me/998900000000" target="_blank" rel="noopener noreferrer">
+              WhatsApp
+            </a>
+            <a class="link" href="mailto:info@salomatlikbufeti.com">Email</a>
+          </div>
+        </div>
+
+        <form id="partnerForm" class="partner-form">
+          <label>
+            Имя
+            <input id="partnerNameInput" type="text" required />
+          </label>
+          <label>
+            Компания
+            <input id="partnerCompanyInput" type="text" required />
+          </label>
+          <label>
+            Телефон / Telegram
+            <input id="partnerContactInput" type="text" required />
+          </label>
+          <label>
+            Описание товара
+            <textarea id="partnerDescriptionInput" rows="4" required></textarea>
+          </label>
+
+          <div class="upload-block">
+            <p class="muted" style="margin:0 0 .4rem;">
+              Загрузите фото (опционально). Фото будут показаны у вас на странице (превью).
+            </p>
+            <input
+              id="partnerPhotosInput"
+              type="file"
+              accept="image/*"
+              multiple
+            />
+            <div id="partnerPhotosPreview" class="photo-preview-grid" aria-live="polite"></div>
+            <p id="partnerUploadHint" class="status-text" style="margin: .35rem 0 0;"></p>
+          </div>
+
+          <div class="contact-row" style="margin-top: 0.85rem;">
+            <button id="partnerSendBtn" class="action-btn" type="submit">Отправить заявку в Telegram</button>
+          </div>
+        </form>
+      </div>
+
+      <div class="panel how-it-works-panel">
+        <h2>📦 Как это работает (UX)</h2>
+        <div class="how-steps how-steps--wide">
+          <div class="step-card">
+            <strong>Register</strong>
+            <span>Регистрация</span>
+          </div>
+          <div class="step-card">
+            <strong>Add your products</strong>
+            <span>Добавьте товары</span>
+          </div>
+          <div class="step-card">
+            <strong>Get orders</strong>
+            <span>Получайте заказы</span>
+          </div>
+          <div class="step-card">
+            <strong>Earn money</strong>
+            <span>Зарабатывайте</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="vacancies" class="section-block">
+      <div class="section-header">
+        <h1>Vacancies</h1>
+        <p>Откликайтесь быстро — мы отправим заявку в Telegram.</p>
+      </div>
+
+      <div class="panel vacancies-panel">
+        <div class="vacancies-toolbar">
+          <label>
+            Работа
+            <select id="vacWorkTypeSelect">
+              <option value="ALL">Любая</option>
+              <option value="Full-time">Full-time</option>
+              <option value="Part-time">Part-time</option>
+            </select>
+          </label>
+          <label>
+            Формат
+            <select id="vacFormatSelect">
+              <option value="ALL">Любой</option>
+              <option value="Remote">Remote</option>
+              <option value="Office">Office</option>
+            </select>
+          </label>
+        </div>
+
+        <div id="vacanciesGrid" class="vacancies-grid"></div>
+        <p id="vacanciesEmpty" class="status-text hidden">Нет вакансий под выбранные фильтры.</p>
+      </div>
+    </section>
+  </main>
+
+  <div id="tierInfoModal" class="modal hidden" role="dialog" aria-modal="true" aria-label="Tier info">
+    <div class="modal__content modal__content--text" id="tierInfoContent">
+      <button class="modal__close" id="tierInfoCloseBtn" type="button" aria-label="Close">&times;</button>
+      <div class="modal-body" id="tierInfoBody"></div>
+    </div>
   </div>
+
+  <div id="applyModal" class="modal hidden" role="dialog" aria-modal="true" aria-label="Apply">
+    <div class="modal__content" style="max-width: 720px;">
+      <button class="modal__close" id="applyCloseBtn" type="button" aria-label="Close">&times;</button>
+      <h2 style="margin:0 0 .75rem;">Отклик на вакансию</h2>
+      <form id="applyForm" class="partner-form">
+        <input type="hidden" id="applyVacancyTitle" />
+        <label>
+          Имя
+          <input id="applyNameInput" type="text" required />
+        </label>
+        <label>
+          Телефон / Telegram
+          <input id="applyContactInput" type="text" required />
+        </label>
+        <label>
+          Опыт
+          <input id="applyExperienceInput" type="text" />
+        </label>
+        <label>
+          Сообщение
+          <textarea id="applyMessageInput" rows="4" required></textarea>
+        </label>
+        <button class="action-btn" type="submit">Отправить в Telegram</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Product/photo modal -->
+  <div id="imageModal" class="modal hidden" role="dialog" aria-modal="true" aria-label="Image preview">
+    <button id="closeModalBtn" class="modal__close" type="button" aria-label="Close image preview">&times;</button>
+    <div class="modal__content">
+      <img id="modalImage" src="" alt="Product preview" />
+    </div>
+  </div>
+
+  <footer class="mobile-menu" aria-label="Bottom menu">
+    <a href="index.html" class="mobile-menu__btn active" aria-label="Home">
+      <svg viewBox="0 0 24 24" aria-hidden="true">
+        <path d="M3 10.5L12 3l9 7.5V21a1 1 0 01-1 1h-6v-6H10v6H4a1 1 0 01-1-1v-10.5z" />
+      </svg>
+      <span>Home</span>
+    </a>
+    <a href="location/place.html" class="mobile-menu__btn" aria-label="Location">
+      <svg viewBox="0 0 24 24" aria-hidden="true">
+        <path d="M12 22s7-6.2 7-12a7 7 0 10-14 0c0 5.8 7 12 7 12zm0-9a3 3 0 110-6 3 3 0 010 6z" />
+      </svg>
+      <span>Location</span>
+    </a>
+    <a href="profile/profile.html" class="mobile-menu__btn" aria-label="Profile">
+      <svg viewBox="0 0 24 24" aria-hidden="true">
+        <path d="M12 12a5 5 0 100-10 5 5 0 000 10zm-8 9a8 8 0 1116 0H4z" />
+      </svg>
+      <span>Profile</span>
+    </a>
+    <a href="korzina/korzina.html" class="mobile-menu__btn" aria-label="Cart">
+      <svg viewBox="0 0 24 24" aria-hidden="true">
+        <path d="M6 6h15l-1.5 8H8L6 4H3M9 20a1 1 0 100 2 1 1 0 000-2zm8 0a1 1 0 100 2 1 1 0 000-2z" />
+      </svg>
+      <span>Cart</span>
+      <span id="cartCount" class="cart-badge">0</span>
+    </a>
+  </footer>
+
+  <script type="module" src="script.js"></script>
+</body>
+</html>
